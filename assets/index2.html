@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>คำถามที่พบบ่อย</title>
+  <style>
+    :root{
+      --bg:#fff5f6;
+      --card:#ffffff;
+      --accent:#c62828; /* สีแดงหลัก */
+      --accent-2:#ef5350; /* ไฮไลต์ */
+      --muted:#6b6b6b;
+      --text:#2b2b2b;
+      --soft:#fff0f0;
+      --shadow: 0 6px 18px rgba(198,40,40,0.08);
+      --radius:12px;
+    }
+
+    /* Base */
+    html,body{height:100%;}
+    body{
+      font-family: "Noto Sans Thai", "Sarabun", "Helvetica Neue", Arial, sans-serif;
+      background:linear-gradient(180deg, #fff5f6 0%, #fffaf9 100%);
+      color:var(--text);
+      margin:0;
+      padding:18px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container{
+      max-width:1000px;
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .logo{
+  width:90px;
+  height:90px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-weight:800;
+  font-size:48px; /* เพิ่มขนาดตัวอักษร QA */
+  box-shadow:var(--shadow);
+  flex:0 0 90px;
+    }
+
+    h1{
+      font-size:24px;
+      margin:0;
+      color:var(--accent);
+    }
+
+    p.lead{
+      color:var(--muted);
+      margin:6px 0 18px 0;
+      font-size:20px;
+    }
+
+    /* Accordion */
+    .accordion{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      border:1px solid rgba(198,40,40,0.06);
+    }
+    .item + .item{ border-top:1px solid rgba(198,40,40,0.06); }
+
+    .question{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 18px;
+      cursor:pointer;
+      user-select:none;
+      gap:6px;
+    }
+    .question:focus{ outline:3px solid rgba(198,40,40,0.12); }
+    .question h3{
+      font-size:14px;
+      margin:0;
+      color:var(--text);
+      line-height:1.2;
+    }
+    .chev{
+      width:36px;
+      height:36px;
+      display:inline-grid;
+      place-items:center;
+      border-radius:8px;
+      transition:transform .22s ease, background .18s;
+      color:var(--accent);
+      background:linear-gradient(180deg, rgba(198,40,40,0.06), transparent);
+      flex:0 0 36px;
+      font-weight:700;
+    }
+
+    .answer{
+      padding:0 18px 18px 18px;
+      color:var(--muted);
+      line-height:1.7;
+      display:none;
+      font-size:14px;
+      background:linear-gradient(180deg, rgba(239,83,80,0.02), transparent);
+    }
+    .answer a{ color:var(--accent); text-decoration:none; }
+    .open .answer{ display:block; }
+    .open .chev{ transform:rotate(90deg); background:linear-gradient(180deg, rgba(198,40,40,0.12), rgba(239,83,80,0.04)); }
+
+    /* Downloads / quick menu */
+    .downloads{
+      margin-top:18px;
+      padding:14px 16px;
+      background:linear-gradient(90deg, #fff7f7, #fffaf9);
+      border-radius:10px;
+      border:1px solid rgba(239,83,80,0.06);
+    }
+    .downloads strong{ color:var(--accent); display:block; margin-bottom:8px; }
+    .downloads a{
+      display:block;
+      color:var(--accent-2);
+      text-decoration:none;
+      margin:8px 0;
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:8px;
+    }
+    .downloads a:hover{ background:rgba(239,83,80,0.04); }
+
+    .contact{
+      margin-top:14px;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .note{
+      margin-top:12px;
+      font-size:14px;
+      color:#8a8a8a;
+    }
+
+    /* Utility */
+    ul{ margin:8px 0 0 18px; padding:0; }
+    li{ margin:6px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">QA</div>
+      <div>
+        <h1>คำถามที่พบบ่อย</h1>
+        <p class="lead">Frequently Asked Questions.</p>
+      </div>
+    </header>
+
+    <div class="accordion" id="faq">
+
+      <!-- (รายการคำถามเหมือนเดิม) -->
+      <div class="item" data-id="1">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>คุณสมบัติสำหรับผู้สมัครขอสินเชื่อมีอะไรบ้าง ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ol>
+            <li>
+              บุคคลธรรมดาที่มีรายได้ประจำ และบุคคลธรรมดาที่ประกอบธุรกิจส่วนตัว สัญชาติไทย และต้องอยู่อาศัยในประเทศไทย เท่านั้น
+            </li>
+
+            <li>
+              อายุผู้กู้
+              <ul>
+                <li>บุคคลธรรมดาที่มีรายได้ประจำ : อายุ 21 - 62 ปี</li>
+                <li>บุคคลธรรมดาที่ประกอบธุรกิจส่วนตัว : อายุ 25 - 62 ปี</li>
+              </ul>
+            </li>
+
+            <li>
+              อายุงาน
+              <ul>
+                <li>1 ปีขึ้นไป สำหรับบุคคลธรรมดาที่มีรายได้ประจำ และผ่านการทดลองงาน ณ ที่ทำงานปัจจุบัน โดยสามารถนับอายุงานต่อเนื่องได้ หากมีเอกสารยืนยันหรือสามารถตรวจสอบที่ทำงานเดิมได้</li>
+                <li>2 ปีขึ้นไป สำหรับบุคคลธรรมดาที่ประกอบธุรกิจส่วนตัว โดยจะต้องมีการจดทะเบียนการค้า หรือ มีหลักฐานการประกอบธุรกิจที่ออกจากหน่วยงานราชการ หรือองค์กรธุรกิจที่น่าเชื่อถือ และสามารถตรวจสอบได้ โดยมีระยะเวลาการดำเนินธุรกิจตรงตามหลักเกณฑ์</li>
+              </ul>
+            </li>
+
+            <li>
+              รายได้ต่อเดือน
+              <ul>
+                <li>บุคคลธรรมดาที่มีรายได้ประจำ รวมต่อเดือน &gt; 15,000 บาท</li>
+                <li>บุคคลธรรมดาที่ประกอบธุรกิจส่วนตัว ธนาคารคำนวณรายได้สุทธิให้ต่อเดือน &gt; 30,000 บาท</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+       <div class="item" data-id="2">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ลูกค้าต้องเตรียมเอกสารอะไรในการสมัครบ้าง ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li><a href="https://drive.google.com/file/d/1toelJgD3yy5Jzc3rJ52ybRf5pocvtCvv/view?usp=sharing" id="homeloan4u" target="_blank">กู้ซื้อบ้าน Homeloan4U</a></li>
+            <li><a href="https://drive.google.com/file/d/11KaBUi44d3jGInjgkeqzdRWDi2yOW2bn/view?usp=sharing" id="homeloan4u" target="_blank">รีไฟแนนซ์ Refinance</a></li>
+            <li><a href="https://drive.google.com/file/d/19c9Q7z4UiUDqWm83wiov6sushd679XKD/view?usp=sharing" id="homeloan4u" target="_blank">บ้านแลกเงิน Home4Cash</a></li>
+          </ul>
+          <p><Strong>หมายเหตุ : </strong>ผู้กู้ทุกท่านต้องนำบัตรประชาชนตัวจริงมาแสดงตนต่อหน้าเจ้าหน้าที่ธนาคาร หรือพนักงานรับเอกสาร (Messenger) เพื่อพิสูจน์ตัวตน ทั้งนี้ ธนาคารขอสงวนสิทธิ์ไม่รับพิจารณาคำขอสินเชื่อจากลูกค้าที่ไม่ได้รับการยืนยันตัวตน (KYC) ในทุกกรณี</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="3">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>สามารถกู้ร่วมได้กี่คน และใครสามารถกู้ร่วมได้บ้าง ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <p>สามารถมีผู้กู้ร่วมได้สูงสุด 3 คน (รวมผู้กู้หลักเป็น 4 คน) โดยผู้กู้ร่วมต้องมีความสัมพันธ์ทางสายเลือดหรือเครือญาติกับผู้กู้หลัก และสามารถตรวจสอบความสัมพันธ์ได้<br>เช่น คู่สมรส พี่น้อง หรือบิดามารดากู้ร่วมกับบุตร เป็นต้น</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="4">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>วงเงินกู้ขั้นต่ำและวงเงินกู้สูงสุดของสินเชื่อแต่ละประเภท ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li><strong>กู้ซื้อบ้าน Homeloan4U : </strong>อนุมัติวงเงินกู้ขั้นต่ำ 5 แสนบาทขึ้นไป และมี LTV 70% – 100%</li>
+            <li><strong>รีไฟแนนซ์ Refinance : </strong>อนุมัติวงเงินกู้ 100% ของยอดเงินต้นคงเหลือรวมกับดอกเบี้ยตั้งพัก (ถ้ามี) ขั้นต่ำ 5 แสนบาทขึ้นไป และมี LTV 80% - 110%</li>
+            <li><strong>บ้านแลกเงิน Home4Cash : </strong>อนุมัติวงเงินกู้ขั้นต่ำ 3 แสนบาทขึ้นไป และมี LTV 80% – 95%</li>
+          </ul>
+          <p>LTV หมายถึง สัดส่วนวงเงินกู้ที่ธนาคารอนุมัตินำไปเปรียบเทียบกับราคาประเมินทรัพย์สินที่นำมาเป็นหลักประกัน ทั้งนี้ ขึ้นอยู่กับอาชีพและรายได้ของผู้กู้ รวมถึงรายการส่งเสริมการขายของธนาคารในขณะนั้น<br>และในกรณี กู้ซื้อบ้าน หากราคาในสัญญาจะซื้อจะขายต่ำกว่าราคาประเมิน สัดส่วนวงเงินกู้จะเปรียบเทียบกับราคาในสัญญาจะซื้อจะขายแทน</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="5">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ระยะเวลาการกู้ยืมสูงสุดเป็นเท่าไหร่ ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li><strong>สินเชื่อเพื่อที่อยู่อาศัย : </strong>สูงสุด 35 ปี (อายุผู้กู้หลัก รวมกับระยะเวลาผ่อนชำระแล้ว มีอายุไม่เกิน 70 ปี; กรณีผู้กู้หลักอายุ 45–62 ปี ต้องมีอายุไม่เกิน 65 ปี เมื่อรวมระยะเวลาผ่อนชำระ)</li>
+            <li><strong>สินเชื่ออเนกประสงค์ : </strong>สูงสุด 20 ปี (อายุผู้กู้หลัก รวมกับระยะเวลาผ่อนชำระแล้ว มีอายุไม่เกิน 65 ปี)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item" data-id="6">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ประเภทของการผ่อนชำระของธนาคารเป็นประเภทใด ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <p>ผ่อนชำระทุกเดือน คำนวณดอกเบี้ยเป็นรายวัน แบบลดต้นลดดอก ตามยอดภาระหนี้คงเหลือของลูกค้า และมี 2 รูปแบบในการผ่อนชำระ ดังนี้</p>
+          <ul>
+            <li><strong>แบบที่ 1 : </strong>ผ่อนเท่ากันทุกเดือน Flat Rate เป็นรูปแบบการผ่อนชำระมาตรฐานของสินเชื่อทุกประเภท</li>
+            <li><strong>แบบที่ 2 : </strong>ดอกเบี้ยต่ำผ่อนต่ำ Interest Based Rate (IBM) สำหรับสินเชื่อเพื่อที่อยู่อาศัยเท่านั้น และขึ้นอยู่กับเกณฑ์ของธนาคาร</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item" data-id="7">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ลูกค้าสามารถ "โปะ" ชำระค่างวดมากกว่าหรือจ่ายเพิ่มที่ธนาคารกำหนดได้หรือไม่ ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <p>สามารถชำระค่างวดเกินหรือจ่ายเพิ่ม (โปะ) เท่าไหร่ก็ได้ตลอดเวลาตั้งแต่งวดแรก แต่ห้ามชำระค่างวดน้อยกว่าขั้นต่ำที่ธนาคารกำหนด ข้อควรระวัง การชำระค่างวดเกินเป็นจำนวนมาก อาจทำให้บัญชีปิดและต้องไถ่ถอนหลักประกันก่อนครบกำหนด ซึ่งอาจมีค่าธรรมเนียมและค่าใช้จ่ายตามเงื่อนไขในสัญญา สามารถศึกษารายละเอียดวิธี "โปะ" ค่างวดของธนาคาร ได้ที่ <a href="https://drive.google.com/file/d/1E5twW6sV_IVmuKe_j9IgFe1FcVUEqeJv/view?usp=sharing" id="form-explain" target="_blank">คำอธิบายการสรุปบัญชีเพื่อเรียกเก็บค่างวดรายเดือน</a></p>
+        </div>
+      </div>
+
+      <div class="item" data-id="8">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ธนาคารใช้วิธีคำนวณดอกเบี้ยปกติและดอกเบี้ยผิดนัดแบบใด ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li><strong>ดอกเบี้ยปกติ : </strong>คำนวณเป็นรายวัน แบบลดต้นลดดอก ตามยอดภาระหนี้คงเหลือ</li>
+            <li><strong>ดอกเบี้ยผิดนัด : </strong>คิดเพิ่มจากอัตราดอกเบี้ยปกติสูงสุดที่เรียกเก็บตามสัญญาเงินกู้บวกเพิ่มอีกไม่เกิน 3% ต่อปีตั้งแต่เริ่มผิดนัด โดยคิดจากเงินต้นในงวดที่ผิดนัดนั้น ๆ</li>
+          </ul>
+          <p>ธนาคารใช้วิธีหักชำระหนี้แบบแนวนอน (Horizontal Payment Allocation) ตามหลักเกณฑ์ ธปท. โดยมีลำดับการตัดชำระหนี้เริ่มต้นที่ค่าธรรมเนียม (ถ้ามี) ดอกเบี้ย และเงินต้นของยอดหนี้ที่ค้างชำระนานที่สุดก่อน แล้วจึงค่อยตัดยอดหนี้ที่ค้างชำระรองลงมาตามลำดับ</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="9">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>อัตราดอกเบี้ยคงที่และอัตราดอกเบี้ยลอยตัวต่างกันอย่างไร ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li>อัตราดอกเบี้ยคงที่ Fixed Rate : เป็นดอกเบี้ยคงที่ ผ่อนคงที่ คาดการณ์ได้</li>
+            <li>อัตราดอกเบี้ยลอยตัว Floating Rate : ปรับตามภาวะเศรษฐกิจ มีความเสี่ยงแต่ได้ประโยชน์เมื่อดอกเบี้ยลด</li>
+          </ul>
+          <p><strong>อัตราดอกเบี้ย MRR</strong> เป็นอัตราดอกเบี้ยลอยตัว สามารถเปลี่ยนแปลงเพิ่มขึ้นหรือลดลงได้ ตามประกาศของธนาคาร</p>
+        </div>
+      </div>
+
+      <div class="item" data-id="10">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ค่าธรรมเนียมและค่าใช้จ่ายในการสมัครขอสินเชื่อมีอะไรบ้าง ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <p><strong>ค่าใช้จ่ายสำหรับธนาคาร</strong></p>
+          <ul>
+            <li>ค่าสำรวจและประเมินราคาทรัพย์สิน ขั้นต่ำ 3,210 บาท ต่อหลักประกัน (รวม VAT) ทั้งนี้ ขึ้นอยู่กับขนาด ประเภท จำนวน และที่ตั้งของหลักประกัน</li>
+            <li>ค่าอากรแสตมป์ 0.05% ของวงเงินอนุมัติ (สูงสุด ไม่เกิน 10,000 บาท)</li>
+            <li>ค่าเบี้ยปรับ 3% ของยอดคงเหลือ กรณียกเลิกและไถ่ถอนหลักประกันก่อนระยะเวลา 3 ปี โดยการรีไฟแนนซ์ไปยังสถาบันการเงินอื่น</li>
+          </ul>
+          <p><strong>ค่าใช้จ่ายสำหรับหน่วยงานราชการ (สำนักงานที่ดิน)</strong></p>
+          <ul>
+            <li>ค่าโอนกรรมสิทธิ์ที่ดินและสิ่งปลูกสร้าง 2% ของราคาขาย หรือราคาประเมินที่ดินจากกรมธนารักษ์ แล้วแต่ว่าอันไหนสูงกว่า</li>
+            <li>ค่าภาษีธุรกิจเฉพาะ 3.3% หรือค่าอากร 0.5% ของราคาขาย หรือราคาประเมินที่ดินจากกรมธนารักษ์ แล้วแต่ว่าอันไหนสูงกว่า หากเสียค่าภาษีธุรกิจเฉพาะแล้ว จะไม่เรียกเก็บค่าอากรเพิ่ม</li>
+            <li>ค่าภาษีเงินได้หัก ณ ที่จ่าย คำนวณจากราคาประเมินที่ดินจากกรมธนารักษ์ คำนึงถึงที่ตั้งของอสังหาริมทรัพย์ จำนวนปีที่ถือครองที่ดิน มาคำนวณ แต่สูงสุดไม่เกิน 20% ของราคาประเมิน</li>
+            <li>ค่าจดจำนอง 1% ของทุนจำนอง</li>
+            <li>ค่าธรรมเนียมอื่น ๆ เช่น ค่าคำขอ ค่าพยาน เป็นต้น</li>
+          </ul>
+          <p><strong>ค่าใช้จ่ายสำหรับบริษัทประกัน</strong></p>
+          <ul>
+            <li>ค่าเบี้ยประกันอัคคีภัย ตามอัตราของบริษัทประกันภัย</li>
+            <li>ค่าเบี้ยประกันชีวิตคุ้มครองสินเชื่อ ตามอัตราของบริษัทประกันชีวิต</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item" data-id="11">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ประกันภัยประเภทที่ลูกค้าจำเป็นต้องทำและที่สามารถเลือกทำได้มีอะไรบ้าง ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li><strong>ประกันอัคคีภัย : </strong>จำเป็นสำหรับสินเชื่อมีหลักประกัน ต้องระบุธนาคารเป็นผู้รับผลประโยชน์</li>
+            <li><strong>ประกันชีวิตคุ้มครองสินเชื่อ : </strong>ลูกค้าสามารถเลือกทำได้ ไม่บังคับ ไม่ส่งผลต่อการอนุมัติสินเชื่อ แต่อาจมีประโยชน์กับท่าน</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item" data-id="12">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ผลที่เกิดหากลูกค้ามีการผิดนัดชำระหนี้มีอะไรบ้าง ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li>ถูกคิดดอกเบี้ยผิดนัดเพิ่มขึ้นจากดอกเบี้ยปกติ</li>
+            <li>ภาระดอกเบี้ยที่อาจสูงขึ้นระหว่างผิดนัดชำระหนี้ และเบี้ยปรับจากการชำระหนี้ล่าช้า</li>
+            <li>ธนาคารอาจหักเงินจากบัญชีเงินฝากหรือบัญชีอื่นของลูกค้า (ถ้ามี) เพื่อนำมาชำระหักลบกลบหนี้ที่ค้างอยู่</li>
+            <li>อาจถูกบอกเลิกสัญญา โอนขายหนี้ และดำเนินการตามกฎหมาย เช่น ฟ้องร้อง บังคับคดี ยึดทรัพย์</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item" data-id="13">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>ช่องทางติดต่อขอรับบริการหลังการขาย ?</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <p><strong style="color:var(--accent)">CIMB THAI Care Center</strong> ที่หมายเลข <strong style="color:var(--accent)">02-626-7777</strong></p>
+          <p><strong>สินเชื่อประเภทมีหลักประกัน กด 5</strong></P>
+          <ul>
+            <li>ขอไถ่ถอนหลักประกันและปิดบัญชีสินเชื่อมีหลักประกัน กด 1</li>
+            <li>ขอปรับลดอัตราดอกเบี้ยสินเชื่อมีหลักประกัน กด 2</li>
+            <li>ขอสอบถามสถานะการสมัคร กด 3</li>
+            <li>ขอเปลี่ยนแปลงข้อมูลส่วนบุคคล และอื่น ๆ กด 4</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item" data-id="14">
+        <div class="question" tabindex="0" role="button" aria-expanded="false">
+          <h3>แบบฟอร์มและเอกสารที่เกี่ยวข้อง Download Center</h3>
+          <div class="chev" aria-hidden="true">›</div>
+        </div>
+        <div class="answer" aria-hidden="true">
+          <ul>
+            <li><a href="https://drive.google.com/file/d/1xetkIlkdUDQtkYt1M9gfdwIthCxpHtzS/view?usp=sharing_blank" id="form-loan" target="_blank">คำขอใช้บริการสินเชื่อประเภทมีหลักประกัน</a></li>
+            <li><a href="https://drive.google.com/file/d/16YAMQYsgEiREBFQOSI9s5q6Cs_OYD0fC/view?usp=sharing_blank" id="form-pdpa" target="_blank">หนังสือให้ความยินยอม PDPA Consents</a></li>
+            <li><a href="https://drive.google.com/file/d/1ctjuBQ2EMu_SkWXthoS_M3XZViwu4Esy/view?usp=sharing_blank" id="form-ncb" target="_blank">หนังสือให้ความยินยอม NCB</a></li>
+            <li><a href="https://drive.google.com/file/d/1K6kGS4hJZeNps8Ieyh4AEeKQmYBvjedc/view?usp=sharing_blank" id="form-insurance" target="_blank">แบบสอบถามความต้องการซื้อประกันชีวิตคุ้มครองสินเชื่อบ้าน</a></li>
+            <li><a href="https://drive.google.com/file/d/18HL1PpORB1RnGvF3FyxMV5P8hZQ0n-0U/view?usp=sharing_blank" id="form-guide" target="_blank">คำแนะนำในการกรอกใบคำขอและลงชื่อ</a></li>
+            <li><a href="https://drive.google.com/file/d/1ttUvl179uNtstflzSI-25o4sEFR4pZw3/view?usp=sharing_blank" id="form-close" target="_blank">แบบฟอร์มยกเลิกวงเงินสินเชื่อ ชำระหนี้ปิดบัญชี และไถ่ถอนหลักประกัน</a></li>
+            <li><a href="https://drive.google.com/file/d/1K8JK27M_yuYpTMRIQtwOrlj4sQe5NiAR/view?usp=sharing_blank" id="Sales sheet HL" target="_blank">Sales Sheet Homeloan ตารางการเปิดเผยข้อมูลผลิตภัณฑ์สินเชื่อบ้าน</a></li>
+            <li><a href="https://drive.google.com/file/d/1OlgplTDN4sj0Lr_hrpE9NCvN_vREQflx/view?usp=sharing_blank" id="Sales Sheet MP" target="_blank">Sales sheet Mortgagepower ตารางการเปิดเผยข้อมูลผลิตภัณฑ์สินเชื่ออเนกประสงค์</a></li>
+          </ul>
+        </div>
+      </div>
+
+  </div>
+
+  <script>
+    (function(){
+      const items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        const q = item.querySelector('.question');
+        const ans = item.querySelector('.answer');
+        q.addEventListener('click', () => toggle(item, q, ans));
+        q.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            toggle(item, q, ans);
+          }
+        });
+      });
+
+      function toggle(item, q, ans){
+        const isOpen = item.classList.contains('open');
+        // ปิดทั้งหมดก่อน (single-open). หากต้องการหลายรายการเปิดพร้อมกัน ให้ลบบรรทัดนี้
+        document.querySelectorAll('.item.open').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.question').setAttribute('aria-expanded','false');
+          i.querySelector('.answer').setAttribute('aria-hidden','true');
+        });
+        if(!isOpen){
+          item.classList.add('open');
+          q.setAttribute('aria-expanded','true');
+          ans.setAttribute('aria-hidden','false');
+          // scroll into view บนมือถือเพื่อให้คำตอบเห็นชัด
+          setTimeout(()=> item.scrollIntoView({behavior:'smooth', block:'center'}), 120);
+        } else {
+          item.classList.remove('open');
+          q.setAttribute('aria-expanded','false');
+          ans.setAttribute('aria-hidden','true');
+        }
+      }
+
+      // Placeholder link handler
+      document.querySelectorAll('.downloads a[id]').forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          if(a.getAttribute('href') === '#'){
+            e.preventDefault();
+            alert('กรุณาแทนที่ลิงก์นี้ด้วย URL ของไฟล์จริงในโค้ด HTML');
+          }
+        });
+      });
+
+      // Quick menu actions (optional)
+      document.querySelectorAll('[data-action]').forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          if(a.getAttribute('href') === '#') e.preventDefault();
+          // ตัวอย่าง: สามารถเชื่อมต่อกับฟังก์ชันโทรหรือเปิดฟอร์มได้ที่นี่
+          // ตอนนี้แสดงข้อความแจ้งเพื่อทดสอบบนมือถือ
+          alert(a.textContent.trim());
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
